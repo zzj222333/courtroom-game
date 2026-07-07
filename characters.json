@@ -1,0 +1,10 @@
+{
+  "Player_Ba": {"name": "周五郎", "image": "Ba_01.png", "prefix": "Ba", "gender": "male"},
+  "Player_Ma": {"name": "乔二小姐", "image": "Ma_01.png", "prefix": "Ma", "gender": "female"},
+  "Player_Bao": {"name": "亦心", "image": "BaoZi_01.png", "prefix": "BaoZi", "gender": "female"},
+  "Player_WT": {"name": "王潭", "image": "WT_01.png", "prefix": "WT", "gender": "male"},
+  "Player_ZLY": {"name": "周老爷", "image": "ZLY_01.png", "prefix": "ZLY", "gender": "male"},
+  "Player_HA": {"name": "华安", "image": "HA_01.png", "prefix": "HA", "gender": "male"},
+  "Player_XQ": {"name": "香巧", "image": "XQ_01.png", "prefix": "XQ", "gender": "female"},
+  "Player_LX": {"name": "阿癫", "image": "LX_01.png", "prefix": "LX", "gender": "male"}
+}

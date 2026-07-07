@@ -1,0 +1,145 @@
+/* 游戏全局样式 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  width: 100dvw; height: 100dvh;
+  background: #000;
+  overflow: hidden;
+  /* overscroll-behavior 阻止弹性滚动 */
+  overscroll-behavior: none;
+  /* 安全区域由 game-container 自行管理，body 不加 padding */
+  padding: 0;
+  margin: 0;
+
+  font-family: 'SourceHanSansSC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: none;
+}
+
+/* ── Loading 界面 ── */
+#loading-screen {
+  width: 100%; height: 100%;
+  width: 100dvw; height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+}
+
+#loading-box {
+  text-align: center;
+  color: #ccc;
+  width: 320px;
+  max-width: 90vw;
+}
+
+#loading-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+}
+
+#loading-bar-bg {
+  width: 100%; height: 8px;
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+#loading-bar-fill {
+  width: 0%; height: 100%;
+  background: #d4a574;
+  border-radius: 4px;
+  transition: width 0.15s ease-out;
+}
+
+#loading-percent {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+#loading-detail {
+  font-size: 12px;
+  color: #555;
+  min-height: 16px;
+}
+
+/* ── 游戏容器 ── */
+#game-container {
+  width: 100%; height: 100%;
+  width: 100dvw; height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+#game-canvas {
+  display: block;
+}
+
+#ui-layer {
+  position: absolute;
+  pointer-events: none;
+}
+
+#debug-panel {
+  position: absolute;
+  top: 8px; left: 8px;
+  background: rgba(0,0,0,0.85);
+  color: #0f0;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #0f0;
+  white-space: pre-wrap;
+  font-family: 'Consolas', monospace;
+  pointer-events: none;
+  z-index: 100;
+  min-width: 200px;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+/* ── 移动端触摸开始覆盖层 ── */
+#tap-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  width: 100dvw; height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+#tap-text {
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: 8px;
+  animation: tap-pulse 2s ease-in-out infinite;
+}
+
+#tap-sub {
+  color: #666;
+  font-size: 13px;
+  margin-top: 18px;
+  letter-spacing: 3px;
+}
+
+@keyframes tap-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}

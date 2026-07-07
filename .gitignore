@@ -1,0 +1,8 @@
+# Build files
+_build_deploy.py
+serve.py
+start_server.bat
+start_server_compressed.bat
+progress.md
+*.pyc
+__pycache__/

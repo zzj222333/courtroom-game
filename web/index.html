@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>The Game</title>
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <!-- Loading 界面：加载完成前显示 -->
+  <div id="loading-screen">
+    <div id="loading-box">
+      <div id="loading-title">加载中..</div>
+      <div id="loading-bar-bg">
+        <div id="loading-bar-fill"></div>
+      </div>
+      <div id="loading-percent">0%</div>
+      <div id="loading-detail"></div>
+    </div>
+  </div>
+
+  <!-- 游戏主容器-->
+  <div id="game-container" style="display:none">
+    <canvas id="game-canvas"></canvas>
+    <div id="ui-layer"></div>
+    <div id="debug-panel" style="display:none"></div>
+  </div>
+
+  <!-- 移动端：触摸开始覆盖层（仅 CSS 控制显隐）-->
+  <div id="tap-overlay" style="display:none">
+    <div id="tap-text">触摸屏幕开始游戏</div>
+    <div id="tap-sub">Touch to Start</div>
+  </div>
+
+  <!-- 错误浮层：自动捕获 JS 错误并显示 -->
+  <div id="error-overlay" style="display:none; position:fixed; top:8px; left:8px; z-index:99999;
+    background:rgba(0,0,0,0.85); color:#ff4444; font:14px monospace; padding:10px;
+    max-width:90vw; max-height:40vh; overflow:auto; border:1px solid #ff4444; border-radius:4px;">
+  </div>
+  <script>
+    (function(){
+      var el = document.getElementById('error-overlay');
+      var lines = [];
+      function addErr(msg) {
+        lines.push('[' + new Date().toLocaleTimeString() + '] ' + msg);
+        if (lines.length > 30) lines.shift();
+        el.textContent = lines.join('\n');
+        el.style.display = 'block';
+      }
+      window.addEventListener('error', function(e) {
+        addErr('ERROR: ' + e.message + ' @ ' + (e.filename||'') + ':' + (e.lineno||''));
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        addErr('PROMISE REJECT: ' + (e.reason && e.reason.message || e.reason || 'unknown'));
+      });
+      var origErr = console.error;
+      console.error = function() {
+        var args = Array.prototype.slice.call(arguments);
+        addErr('console.error: ' + args.map(function(a){ return typeof a==='object'?JSON.stringify(a):a; }).join(' '));
+        origErr.apply(console, arguments);
+      };
+    })();
+  </script>
+
+ <script src="js/save.js?v=189"></script>
+<script src="js/audio.js?v=187"></script>
+<script src="js/input.js?v=184"></script>
+<script src="js/engine.js?v=184"></script>
+<script src="js/gamestate.js?v=229"></script>
+<script src="js/ui.js?v=212"></script>
+<script src="js/investigation.js?v=187"></script>
+<script src="js/confrontation.js?v=221"></script>
+<script src="js/puzzle.js?v=194"></script>
+<script src="js/inventory.js?v=195"></script>
+<script src="js/main.js?v=276"></script>
+</body>
+</html>

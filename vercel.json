@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/", "destination": "/web/" }
+  "redirects": [
+    { "source": "/", "destination": "/web/", "permanent": false }
   ]
 }
